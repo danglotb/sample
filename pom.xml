@@ -39,6 +39,24 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.powerapi.jjoulesmaven</groupId>
+                <artifactId>jjoules-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <!-- <phase>jjoulestest</phase>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/jjoules-reports</outputDirectory>
+                        </configuration> -->
+                        <goals>
+                            <goal>prepare-output</goal>
+                            <goal>save-result</goal>
+                        </goals>
+
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
