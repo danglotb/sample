@@ -5,10 +5,10 @@ import org.powerapi.jjoules.junit.EnergyTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@EnergyTest
+
 public class TestExample {
 
-    @Test
+	@EnergyTest
     void test() {
         final Example example = new Example();
         assertEquals('b', example.charAt("abcd", 1));
