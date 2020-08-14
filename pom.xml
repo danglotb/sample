@@ -1,82 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>fr.inria</groupId>
-    <artifactId>sample</artifactId>
-    <version>1.0</version>
+	<groupId>fr.inria</groupId>
+	<artifactId>sample</artifactId>
+	<version>1.0</version>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <default.encoding>UTF-8</default.encoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<default.encoding>UTF-8</default.encoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<junit.jupiter.version>5.5.2</junit.jupiter.version>
+		<junit.platform.version>1.5.2</junit.platform.version>
+	</properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.1.0</version>
-            <scope>test</scope>
-        </dependency>
+	<dependencies>
 
-        <dependency>
-            <groupId>org.powerapi.jjoules</groupId>
-            <artifactId>j-joules</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+		<!-- you need these 3 dependencies to execute your test with JUnit 5 -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-runner</artifactId>
+			<version>${junit.platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powerapi.jjoules</groupId>
+			<artifactId>junit-jjoules</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.powerapi.jjoules</groupId>
-            <artifactId>junit-jjoules</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+		<!-- don't need this dependency it already in junit-jjoules -->
+		<!-- <dependency> <groupId>org.powerapi.jjoules</groupId> <artifactId>j-joules</artifactId> 
+			<version>1.0-SNAPSHOT</version> </dependency> -->
 
-    </dependencies>
+		<dependency>
+			<groupId>org.powerapi.jjoules</groupId>
+			<artifactId>junit-jjoules</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.powerapi.jjoulesmaven</groupId>
-                <artifactId>jjoules-maven-plugin</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <!-- <phase>jjoulestest</phase>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/jjoules-reports</outputDirectory>
-                        </configuration> -->
-                        <goals>
-                            <goal>prepare-output</goal>
-                            <goal>save-result</goal>
-                        </goals>
+	</dependencies>
 
-                    </execution>
-                </executions>
-            </plugin>
+	<build>
+		<plugins>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>1.1.0</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.junit.jupiter</groupId>
-                        <artifactId>junit-jupiter-engine</artifactId>
-                        <version>5.1.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
+			<!-- Don't need this plugin because now we should just use j-joules project 
+				and junit-jjoules they do the work -->
+			<!-- <plugin> <groupId>org.powerapi.jjoulesmaven</groupId> <artifactId>jjoules-maven-plugin</artifactId> 
+				<version>1.0-SNAPSHOT</version> <executions> <execution> <phase>jjoulestest</phase> 
+				<configuration> <outputDirectory>${basedir}/target/jjoules-reports</outputDirectory> 
+				</configuration> <goals> <goal>prepare-output</goal> <goal>save-result</goal> 
+				</goals> </execution> </executions> </plugin> -->
 
-        </plugins>
-    </build>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>1.1.0</version>
+					</dependency>
+					<dependency>
+						<groupId>org.junit.jupiter</groupId>
+						<artifactId>junit-jupiter-engine</artifactId>
+						<version>5.1.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+
+			<!-- config for getting a tests jar file for call graph -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Configuration for call graph -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>call-graph</id>
+						<phase>test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>java</executable>
+							<arguments>
+								<argument>-jar</argument>
+								<argument>javacg-0.1-SNAPSHOT-static.jar</argument>
+								<argument>${project.build.directory}/${project.build.finalName}-tests.jar</argument>
+							</arguments>
+							<outputFile>${project.build.directory}/call-graph/tests-callgraph.txt</outputFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- goal for creating a matrix for call graph -->
+			<plugin>
+				<groupId>org.powerapi.jjoules</groupId>
+				<artifactId>junit-jjoules</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>callgraph-matrix</id>
+						<phase>test</phase>
+						<goals>
+							<goal>generate-matrix</goal>
+						</goals>
+						<!-- example configuration -->
+						<!-- <configuration> <outputDir>${project.build.directory}/tests-call-graphs</outputDir> 
+							<outputFilename>matrix.txt</outputFilename> <callgraphFilename>callgraph.txt</callgraphFilename> 
+							</configuration> -->
+					</execution>
+				</executions>
+			</plugin>
+
+
+		</plugins>
+	</build>
 
 </project>
