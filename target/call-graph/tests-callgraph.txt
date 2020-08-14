@@ -1,8 +1,0 @@
-C:fr.inria.TestExample fr.inria.Example
-C:fr.inria.TestExample fr.inria.TestExample
-C:fr.inria.TestExample java.lang.Object
-C:fr.inria.TestExample org.junit.jupiter.api.Assertions
-M:fr.inria.TestExample:<init>() (O)java.lang.Object:<init>()
-M:fr.inria.TestExample:test() (O)fr.inria.Example:<init>()
-M:fr.inria.TestExample:test() (M)fr.inria.Example:charAt(java.lang.String,int)
-M:fr.inria.TestExample:test() (S)org.junit.jupiter.api.Assertions:assertEquals(char,char)

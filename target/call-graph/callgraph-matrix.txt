@@ -1,2 +1,0 @@
-fr.inria.TestExample:test() 
-fr.inria.Example:charAt(java.lang.String,int) true 
